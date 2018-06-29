@@ -14,17 +14,13 @@ RSpec.describe 'a visitor' do
       larry = Comedian.create(name: 'Larry', age: 69)
 
       visit '/comedians'
-
-      within ("id_#{jerry.id}") do 
-        expect(page).to have_content('Jerry')
-        expect(page).to have_content(62)
-      end
-
-      within ("id_#{larry.id}") do 
-        expect(page).to have_content('Larry')
-        expect(page).to have_content(69)
-      end
-
+     
+      expect(page).to have_content('Jerry')
+      expect(page).to have_content(62)
+  
+      expect(page).to have_content('Larry')
+      expect(page).to have_content(69)
+    
     end
   end
 end
