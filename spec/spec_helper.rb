@@ -8,6 +8,7 @@ require 'capybara/dsl'
 
 Capybara.app = LaughTracksApp
 Capybara.save_path = 'tmp/capybara'
+Capybara.ignore_hidden_elements = false
 
 DatabaseCleaner.strategy = :truncation
 
