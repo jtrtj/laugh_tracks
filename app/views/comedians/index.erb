@@ -3,6 +3,9 @@
     <ul>
       <li><%= comedian.name %></li>
       <li><%= comedian.age %></li>
+       <% if comedian.specials %>
+      <li> <%= comedian.specials.name %></li>
+    <% end %>
     </ul>
   </div>
 <% end %>
