@@ -47,13 +47,20 @@ RSpec.describe 'a visitor' do
       cc_special = jerry.specials.create(name: 'Comedy Central Special')
 
       visit '/comedians'
-      save_and_open_page
 
       within ("#id_#{jerry.id}") do
         expect(page).to have_content('Jerry Seinfeld HBO Special')
         expect(page).to have_content('Comedy Central Special')
       end
+    end
 
+    it 'should see average age of comedians' do
+      jerry = Comedian.create(name: 'Jerry', age: 62)
+      larry = Comedian.create(name: 'Larry', age: 69)
+
+      visit '/comedians'
+
+      expect(page).to have_content('Average Age: 65.5')
     end
   end
 end
