@@ -43,8 +43,8 @@ RSpec.describe 'a visitor' do
       jerry = Comedian.create(name: 'Jerry', age: 62)
       larry = Comedian.create(name: 'Larry', age: 69)
 
-      hbo_special = Special.create(name: 'Jerry Seinfeld HBO Special', comedian_id: jerry.id)
-      cc_special = Special.create(name: 'Larry David Comedy Central Special', comedian_id: larry.id)
+      hbo_special = jerry.specials.create(name: 'Jerry Seinfeld HBO Special')
+      cc_special = jerry.specials.create(name: 'Comedy Central Special')
 
       visit '/comedians'
       save_and_open_page
