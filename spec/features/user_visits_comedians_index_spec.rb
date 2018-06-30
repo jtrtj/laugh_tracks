@@ -49,8 +49,10 @@ RSpec.describe 'a visitor' do
       visit '/comedians'
       save_and_open_page
 
-      page.should have_css("id_#{jerry.id}", :text => 'Jerry Seinfeld HBO Special')
-      page.should have_css("id_#{larry.id}", :text => 'Larry David Comedy Central Special')
+      within ("#id_#{jerry.id}") do
+        expect(page).to have_content('Jerry Seinfeld HBO Special')
+        expect(page).to have_content('Comedy Central Special')
+      end
 
     end
   end

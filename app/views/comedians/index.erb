@@ -2,18 +2,18 @@
 <html>
   <body>
     <% @comedians.each do |comedian| %>
-      <div id="id_<%= comedian.id %>">
+      <div class="comedian" id="id_<%= comedian.id %>">
         <ul>
           <li><%= comedian.name %></li>
           <li><%= comedian.age %></li>
-          <% if comedian.specials %>
-            <% comedian.specials.each do |special| %>
-            <ul id="<%= comedian.name %>'s Specials:'">
-              <li><%= special.name %></li>
-            </ul>
-            <% end %>
-          <% end %>
         </ul>
+        <% if comedian.specials %>
+            <ul class="specials">
+            <% comedian.specials.each do |special| %>
+              <li><%= special.name %></li>
+            <% end %>
+            </ul>
+          <% end %>
       </div>
     <% end %>
   </body>
