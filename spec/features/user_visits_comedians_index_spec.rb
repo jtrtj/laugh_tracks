@@ -59,8 +59,9 @@ RSpec.describe 'a visitor' do
       larry = Comedian.create(name: 'Larry', age: 69)
 
       visit '/comedians'
+      save_and_open_page
 
-      expect(page).to have_content('Average Age: 65.5')
+      expect(page).to have_content('Average age of comedians: 65.5')
     end
   end
 end
