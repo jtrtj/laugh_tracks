@@ -8,6 +8,7 @@
           <li><%= comedian.age %></li>
         </ul>
         <% if comedian.specials %>
+            <p>Special Count: <%= comedian.specials_count %></p>
             <ul class="specials">
             <% comedian.specials.each do |special| %>
               <li><%= special.name %></li>

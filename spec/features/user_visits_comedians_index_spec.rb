@@ -60,7 +60,28 @@ RSpec.describe 'a visitor' do
 
       visit '/comedians'
 
-      expect(page).to have_content('Average age of comedians: 65.5')
+      expect(page).to have_content("Average age of comedians: #{Comedian.avg_age}")
+    end
+
+    it 'should see number of specials per comedian' do
+      jerry = Comedian.create(name: 'Jerry', age: 62)
+      larry = Comedian.create(name: 'Larry', age: 69)
+
+      special_1 = jerry.specials.create(name: 'Jerry Seinfeld HBO Special')
+      special_2 = jerry.specials.create(name: 'Comedy Central Special')
+      special_3 = larry.specials.create(name: 'Really Funny Special')
+
+
+      visit '/comedians'
+
+      within ("#id_#{jerry.id}") do
+        expect(page).to have_content("Special Count: #{jerry.specials_count}")
+      end
+
+      within ("#id_#{larry.id}") do
+        expect(page).to have_content("Special Count: #{larry.specials_count}")
+      end
+
     end
   end
 
@@ -71,7 +92,6 @@ RSpec.describe 'a visitor' do
       john = Comedian.create(name: 'John', age: 34)
       
       visit '/comedians?age=34' 
-      save_and_open_page
 
       expect(page).to have_content("#{john.name}")
       expect(page).to_not have_content("#{jerry.name}")
