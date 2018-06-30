@@ -6,7 +6,7 @@ Then I also see a list of each comedian's specials.
 
 RSpec.describe 'a visitor' do
   context 'visits /comedians' do
-    it "should show comedian's comedy specials in their list" do
+    xit "should show comedian's comedy specials in their list" do
       jerry = Comedian.create(name: 'Jerry', age: 62)
       larry = Comedian.create(name: 'Larry', age: 69)
 
