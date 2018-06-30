@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html>
   <body>
+  <h1 class="header">Comedians</h1>
     <% @comedians.each do |comedian| %>
       <div class="comedian" id="id_<%= comedian.id %>">
         <ul>
-          <li><%= comedian.name %></li>
-          <li><%= comedian.age %></li>
+          <li>Name: <%= comedian.name %></li>
+          <li>Age: <%= comedian.age %></li>
         </ul>
         <% if comedian.specials %>
             <p>Special Count: <%= comedian.specials_count %></p>

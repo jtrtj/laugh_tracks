@@ -89,6 +89,7 @@ RSpec.describe 'a visitor' do
       john = Comedian.create(name: 'John', age: 34)
       
       visit '/comedians?age=34' 
+      save_and_open_page
 
       expect(page).to have_content("#{john.name}")
       expect(page).to_not have_content("#{jerry.name}")

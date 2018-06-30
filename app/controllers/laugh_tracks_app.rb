@@ -5,8 +5,8 @@ class LaughTracksApp < Sinatra::Base
       @comedians = Comedian.where(age: params[:age]).includes(:specials)
     else
       @comedians = Comedian.all.includes(:specials)
-      @average_age = @comedians.avg_age
     end
+    @average_age = @comedians.avg_age
     
     erb :'comedians/index'
   end
