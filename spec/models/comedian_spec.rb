@@ -21,4 +21,18 @@ RSpec.describe Comedian do
       expect(Comedian.avg_age).to eq(65.5)
     end
   end
+
+  describe 'instance methods' do
+    it '#specials_count' do
+      jerry = Comedian.create(name: 'Jerry', age: 62)
+      larry = Comedian.create(name: 'Larry', age: 69)
+
+      special_1 = jerry.specials.create(name: 'Jerry Seinfeld HBO Special')
+      special_2 = jerry.specials.create(name: 'Comedy Central Special')
+      special_3 = larry.specials.create(name: 'Really Funny Special')
+
+      expect(jerry.specials_count).to eq(2)
+      expect(larry.specials_count).to eq(1)
+    end
+  end
 end
