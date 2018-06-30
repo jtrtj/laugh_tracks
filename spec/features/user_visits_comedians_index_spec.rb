@@ -36,7 +36,6 @@ RSpec.describe 'a visitor' do
   
       expect(page).to have_content('Larry')
       expect(page).to have_content(69)
-    
     end
 
     it "should show comedian's comedy specials in their list" do
@@ -71,7 +70,6 @@ RSpec.describe 'a visitor' do
       special_2 = jerry.specials.create(name: 'Comedy Central Special')
       special_3 = larry.specials.create(name: 'Really Funny Special')
 
-
       visit '/comedians'
 
       within ("#id_#{jerry.id}") do
@@ -81,7 +79,6 @@ RSpec.describe 'a visitor' do
       within ("#id_#{larry.id}") do
         expect(page).to have_content("Special Count: #{larry.specials_count}")
       end
-
     end
   end
 
