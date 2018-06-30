@@ -59,9 +59,23 @@ RSpec.describe 'a visitor' do
       larry = Comedian.create(name: 'Larry', age: 69)
 
       visit '/comedians'
-      save_and_open_page
 
       expect(page).to have_content('Average age of comedians: 65.5')
+    end
+  end
+
+  context 'visiting /comedians?age=34' do
+    it 'should see a list of comedians aged 34' do
+      jerry = Comedian.create(name: 'Jerry', age: 62)
+      larry = Comedian.create(name: 'Larry', age: 69)
+      john = Comedian.create(name: 'John', age: 34)
+      
+      visit '/comedians?age=34' 
+      save_and_open_page
+
+      expect(page).to have_content("#{john.name}")
+      expect(page).to_not have_content("#{jerry.name}")
+      expect(page).to_not have_content("#{larry.name}")
     end
   end
 end
